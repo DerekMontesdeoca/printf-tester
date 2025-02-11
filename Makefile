@@ -51,6 +51,7 @@ fclean: clean
 	rm -rf $(TESTS) $(CMOCKA_BUILD_DIR)
 
 $(CMOCKA_LIB):
+	git submodule update --init --recursive
 	mkdir -p $(CMOCKA_BUILD_DIR)
 	cd $(CMOCKA_BUILD_DIR) && cmake .. && make 
 
