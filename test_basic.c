@@ -679,6 +679,43 @@ static void test_contents_bigger_than_buf(void **state)
 	free(str);
 }
 
+static void test_karla(void **state)
+{
+	(void) state;
+	t_stdout_test t;
+	const char *expected = "hola%";
+	stdout_test_init(&t, strlen(expected));
+	int result = ft_printf("hola%");
+	stdout_test_assert_stdout(&t, expected);
+	assert_int_equal(result, strlen(expected));
+	stdout_test_destroy_contents(&t);
+}
+
+static void test_karla2(void **state)
+{
+	(void) state;
+	t_stdout_test t;
+	const char *expected = "0";
+	stdout_test_init(&t, strlen(expected));
+	int result = ft_printf("%d");
+	stdout_test_assert_stdout(&t, expected);
+	assert_int_equal(result, strlen(expected));
+	stdout_test_destroy_contents(&t);
+}
+
+static void test_karla3(void **state)
+{
+	(void) state;
+	t_stdout_test t;
+	const char *expected = "(nil)";
+	stdout_test_init(&t, strlen(expected));
+	int result = ft_printf("%p");
+	stdout_test_assert_stdout(&t, expected);
+	assert_int_equal(result, strlen(expected));
+	stdout_test_destroy_contents(&t);
+}
+
+
 int	main(void)
 {
 	const struct CMUnitTest tests[] = {
@@ -728,6 +765,9 @@ int	main(void)
 		cmocka_unit_test(test_all_1),
 		cmocka_unit_test(test_all_2),
 		cmocka_unit_test(test_contents_bigger_than_buf),
+		cmocka_unit_test(test_karla),
+		cmocka_unit_test(test_karla2),
+		cmocka_unit_test(test_karla3),
 	};
 	return cmocka_run_group_tests(tests, NULL, NULL);
 }
