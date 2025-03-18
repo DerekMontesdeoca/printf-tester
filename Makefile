@@ -7,7 +7,7 @@ CC := cc
 
 TO_TEST_DIR := ../
 
-LIBFT_LIB := ../libft/libft.a
+override LIBFT_LIB := ../libft/libft.a
 
 CMOCKA_DIR := cmocka
 CMOCKA_INCLUDE_DIR := $(CMOCKA_DIR)/include
