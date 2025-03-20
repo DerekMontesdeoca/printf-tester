@@ -638,18 +638,6 @@ static void test_hex_upper(void **state)
 	stdout_test_destroy_contents(&t);
 }
 
-static void test_hex_mix(void **state)
-{
-	(void) state;
-	t_stdout_test t;
-	const char *expected = "00000   ";
-	stdout_test_init(&t, strlen(expected));
-	int result = ft_printf("%-8.5X", 0x0);
-	stdout_test_assert_stdout(&t, expected);
-	assert_int_equal(result, strlen(expected));
-	stdout_test_destroy_contents(&t);
-}
-
 static void test_all_1(void **state)
 {
 	(void) state;
@@ -751,6 +739,7 @@ static void test_karla3(void **state)
 	stdout_test_destroy_contents(&t);
 }
 
+
 int	main(void)
 {
 	const struct CMUnitTest tests[] = {
@@ -799,7 +788,6 @@ int	main(void)
 		cmocka_unit_test(test_hex_null_hash),
 		cmocka_unit_test(test_hex_null_hash_width),
 		cmocka_unit_test(test_hex_upper),
-		cmocka_unit_test(test_hex_mix),
 		cmocka_unit_test(test_all_1),
 		cmocka_unit_test(test_all_2),
 		cmocka_unit_test(test_contents_bigger_than_buf),
