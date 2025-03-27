@@ -7,8 +7,6 @@ CC := cc
 
 TO_TEST_DIR := ../
 
-override LIBFT_LIB := ../libft/libft.a
-
 CMOCKA_DIR := cmocka
 CMOCKA_INCLUDE_DIR := $(CMOCKA_DIR)/include
 CMOCKA_BUILD_DIR := $(CMOCKA_DIR)/build
@@ -35,7 +33,7 @@ all: tests
 
 tests: to_test $(TESTS)
 
-$(TESTS): %: %.o ../libftprintf.a $(LIBFT_LIB) 
+$(TESTS): %: %.o ../libftprintf.a 
 	$(CC) $^ $(LDFLAGS) -o $@
 
 %.o: %.c
