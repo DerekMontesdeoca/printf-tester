@@ -739,6 +739,18 @@ static void test_karla3(void **state)
 	stdout_test_destroy_contents(&t);
 }
 
+static void test_guillermo(void **state)
+{
+	(void) state;
+	t_stdout_test t;
+	const char *expected = "";
+	stdout_test_init(&t, strlen(expected));
+	int result = ft_printf(NULL);
+	stdout_test_assert_stdout(&t, expected);
+	assert_int_equal(result, -1);
+	stdout_test_destroy_contents(&t);
+}
+
 
 int	main(void)
 {
@@ -794,6 +806,7 @@ int	main(void)
 		cmocka_unit_test(test_karla),
 		cmocka_unit_test(test_karla2),
 		cmocka_unit_test(test_karla3),
+		cmocka_unit_test(test_guillermo),
 	};
 	return cmocka_run_group_tests(tests, NULL, NULL);
 }
